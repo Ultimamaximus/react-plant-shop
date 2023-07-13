@@ -1,40 +1,63 @@
 .detailContainer {
     display: flex;
-    justify-content: space-between;
-    margin-top: 2em;
-  }
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    width: 80%;
+    max-width: 1200px; /* Add this line. Adjust as needed */
+    margin: 0 auto;
+    gap: 50px;
+}
   
-  .detailImage {
+  .imageContainer {
     flex: 1;
     max-width: 500px;
-    object-fit: contain;
   }
   
-  .detailInfo {
-    flex: 1;
-    margin-left: 2em;
+  .detailText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }  
+  
+  img {
+    max-width: 100%;
+    height: auto;
   }
   
-  .detailName {
-    font-size: 2em;
-    margin-bottom: 1em
+  h2 {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 20px;
   }
   
-  .detailDescription {
-    font-size: 1.2em;
-    margin-bottom: 1em;
+  p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
   }
   
-  .detailPrice {
-    font-size: 1.5em;
-    margin-bottom: 1em;
+  .price {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
   }
   
   .addToCartButton {
-    font-size: 1.2em;
-    padding: 0.5em 1em;
-    color: white;
-    background-color: green;
+    background-color: #6c3;
     border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
+    border-radius: 4px;
   }
+  

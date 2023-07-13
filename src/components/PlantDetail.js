@@ -29,11 +29,13 @@ const PlantDetail = ({ onAddToCart }) => {
 
   return (
     <div className={styles.detailContainer}>
-      <img src={plant.image} alt={plant.name} className={styles.detailImage} />
-      <div className={styles.detailInfo}>
-        <h2 className={styles.detailName}>{plant.name}</h2>
-        <p className={styles.detailDescription}>{plant.description}</p>
-        <p className={styles.detailPrice}>${plant.price}</p>
+      <div className={styles.imageContainer}>
+        <img src={plant.image} alt={plant.name} />
+      </div>
+      <div className={styles.detailText}>
+        <h2>{plant.name}</h2>
+        <p className={styles.price}>${plant.price}</p>
+        <p>{plant.description}</p>
         <button onClick={() => onAddToCart(plant)} className={styles.addToCartButton}>Add to Cart</button>
       </div>
     </div>
