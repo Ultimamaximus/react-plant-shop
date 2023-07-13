@@ -1,13 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from './PlantItem.module.css';
 
 function PlantItem({ plant, onAddToCart }) {
   return (
-    <div className="plant-item">
-      <img src={plant.image} alt={plant.name} />
-      <h2>{plant.name}</h2>
-      <p>{plant.description}</p>
-      <p>${plant.price}</p>
-      <button onClick={() => onAddToCart(plant)}>Add to Cart</button>
+    <div className={styles.plantItem}>
+      <Link to={`/plant/${plant.id}`}>
+        <img src={plant.image} alt={plant.name} className={styles.plantImage} />
+        <h2>{plant.name}</h2>
+      </Link>
+      <button onClick={() => onAddToCart(plant)} className={styles.addToCartButton}>Add to Cart</button>
     </div>
   );
 }

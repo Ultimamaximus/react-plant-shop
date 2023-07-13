@@ -1,5 +1,7 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PlantList from './components/PlantList';
+import PlantDetail from './components/PlantDetail';
 
 function App() {
   const handleAddToCart = (plant) => {
@@ -8,12 +10,16 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <h1>My Plant Store</h1>
-      <PlantList onAddToCart={handleAddToCart} />
-    </div>
+    <Router>
+      <div className="app">
+        <h1>My Plant Store</h1>
+        <Routes>
+          <Route path="/" element={<PlantList onAddToCart={handleAddToCart} />} />
+          <Route path="/plant/:id" element={<PlantDetail onAddToCart={handleAddToCart} />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
-

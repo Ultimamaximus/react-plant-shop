@@ -1,0 +1,40 @@
+.detailContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+  }
+  
+  .detailImage {
+    flex: 1;
+    max-width: 500px;
+    object-fit: contain;
+  }
+  
+  .detailInfo {
+    flex: 1;
+    margin-left: 2em;
+  }
+  
+  .detailName {
+    font-size: 2em;
+    margin-bottom: 1em
+  }
+  
+  .detailDescription {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+  
+  .detailPrice {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+  }
+  
+  .addToCartButton {
+    font-size: 1.2em;
+    padding: 0.5em 1em;
+    color: white;
+    background-color: green;
+    border: none;
+    cursor: pointer;
+  }

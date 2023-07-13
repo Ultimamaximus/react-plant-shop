@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getDocs, collection } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import PlantItem from "./PlantItem";
+import styles from "./PlantList.module.css";
 
 const PlantList = () => {
   const [plants, setPlants] = useState([]);
@@ -9,20 +10,20 @@ const PlantList = () => {
   useEffect(() => {
     const getPlants = async () => {
       const querySnapshot = await getDocs(collection(db, "plants"));
-      setPlants(querySnapshot.docs.map((doc) => doc.data()));
+      const plants = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setPlants(plants);
     };
 
     getPlants();
   }, []);
 
   return (
-    <div>
-      {plants.map((plant, index) => (
-        <PlantItem key={index} plant={plant} />
+    <div className={styles.plantList}>
+      {plants.map((plant) => (
+        <PlantItem key={plant.id} plant={plant} />
       ))}
     </div>
   );
 };
 
 export default PlantList;
-
