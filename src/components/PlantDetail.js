@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { CartContext } from '../context/CartContext';
 import styles from './PlantDetail.module.css';
 
-const PlantDetail = ({ onAddToCart }) => {
+const PlantDetail = () => {
   const { id } = useParams();
   const [plant, setPlant] = useState(null);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchPlant = async () => {
@@ -29,14 +31,12 @@ const PlantDetail = ({ onAddToCart }) => {
 
   return (
     <div className={styles.detailContainer}>
-      <div className={styles.imageContainer}>
-        <img src={plant.image} alt={plant.name} />
-      </div>
+      <img className={styles.plantImage} src={plant.image} alt={plant.name} />
       <div className={styles.detailText}>
         <h2>{plant.name}</h2>
-        <p className={styles.price}>${plant.price}</p>
         <p>{plant.description}</p>
-        <button onClick={() => onAddToCart(plant)} className={styles.addToCartButton}>Add to Cart</button>
+        <p>${plant.price}</p>
+        <button className={styles.addToCartButton} onClick={() => addToCart(plant)}>Add to Cart</button>
       </div>
     </div>
   );

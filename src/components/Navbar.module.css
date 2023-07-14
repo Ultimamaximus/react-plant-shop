@@ -1,0 +1,20 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background-color: #4caf50; /* You can change this to match the exact color of the SF Plants navigation bar */
+    color: white;
+    font-size: 20px;
+  }
+  
+  .navLink {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .navLink:hover {
+    color: #f5f5f5;
+  }
+  
