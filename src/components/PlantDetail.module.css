@@ -1,63 +1,76 @@
+/* PlantDetail.module.css */
 .detailContainer {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
-    width: 80%;
-    max-width: 1200px; /* Add this line. Adjust as needed */
-    margin: 0 auto;
-    gap: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 50px;
 }
-  
-  .imageContainer {
-    flex: 1;
-    max-width: 500px;
-  }
-  
-  .detailText {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }  
-  
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  h2 {
-    color: #333;
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-  
-  p {
-    color: #666;
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-  }
-  
-  .price {
-    color: #333;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 30px;
-  }
-  
-  .addToCartButton {
-    background-color: #6c3;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
+
+.imageContainer {
+  flex: 1;
+  max-width: 600px;
+}
+
+.plantImage {
+  width: 100%;
+  height: auto;
+}
+
+.detailText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Keep the center alignment */
+  padding: 20px;
+}
+
+h2 {
+  color: #333;
+  font-size: 48px; /* Increase font size */
+  margin-bottom: 20px;
+  text-align: center; /* Center the text */
+}
+
+.description {
+  color: #666;
+  font-size: 24px; /* Increase font size */
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-align: center; /* Center the text */
+}
+
+.price {
+  color: #333;
+  font-size: 36px; /* Increase font size */
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center; /* Center the text */
+}
+
+.separator {
+  border: 0;
+  border-top: 1px solid #000; 
+  width: 10%; /* Adjust to desired width */
+  margin: 30px auto; /* This will center the line */
+}
+
+.addToCartButton {
+  background-color: #007b5e;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px; /* Increase font size */
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease; /* Add transition for smooth color change */
+}
+
+.addToCartButton:active {
+  background-color: #00563f; /* Change color when button is clicked */
+}

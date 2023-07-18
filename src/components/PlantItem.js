@@ -1,18 +1,19 @@
-import React, { useContext } from 'react';
+// PlantItem.js
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../context/CartContext';
 import styles from './PlantItem.module.css';
 
 function PlantItem({ plant }) {
-  const { addToCart } = useContext(CartContext);
-
   return (
     <div className={styles.plantItem}>
-      <Link to={`/plant/${plant.id}`}>
+      <Link to={`/plant/${plant.id}`} className={styles.plantLink}>
         <img src={plant.image} alt={plant.name} className={styles.plantImage} />
-        <h2>{plant.name}</h2>
+        <div className={styles.nameAndPrice}>
+          <p className={styles.plantNameAndPrice}>
+            {plant.name} - ${plant.price}
+          </p>
+        </div>
       </Link>
-      <button onClick={() => addToCart(plant)} className={styles.addToCartButton}>Add to Cart</button>
     </div>
   );
 }
