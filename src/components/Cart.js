@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import styles from './Cart.module.css';
 
 function Cart() {
   const { cart, removeFromCart, adjustQuantity } = useContext(CartContext);
-
-  
 
   const handleQuantityChange = (plant, event) => {
     adjustQuantity(plant, event.target.value);
@@ -31,8 +30,12 @@ function Cart() {
           </div>
         </div>
       ))}
+<Link to="/customer-info">
+  <button>Go to Checkout</button>
+</Link>
     </div>
   );
 }
 
 export default Cart;
+
