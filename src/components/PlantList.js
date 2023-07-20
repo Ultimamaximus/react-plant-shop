@@ -20,16 +20,10 @@ const PlantList = () => {
   }, []);
 
   return (
-    <div>
-      <div className={styles.productsHeading}>
-        <h1>Products</h1>
-        <div className={styles.lineSeparator}></div>
-      </div>
-      <div className={styles.plantList}>
-        {plants.map((plant) => (
-          <PlantItem key={plant.id} plant={plant} onAddToCart={addToCart} /> // Pass addToCart to PlantItem
-        ))}
-      </div>
+    <div className={styles.plantList}>
+      {plants.map((plant) => (
+        <PlantItem key={plant.id} plant={plant} onAddToCart={addToCart} /> // Pass addToCart to PlantItem
+      ))}
     </div>
   );
 };

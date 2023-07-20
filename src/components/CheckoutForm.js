@@ -1,38 +1,18 @@
 import React, { useState, useContext } from 'react';
-import { CardElement, useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from '@stripe/react-stripe-js';
-import { httpsCallable } from 'firebase/functions';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 import { CartContext } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom'; 
 import { collection, addDoc } from 'firebase/firestore';
-import { db, functionsInstance } from '../firebase';
-import styles from './CheckoutForm.module.css';
-
-const CARD_ELEMENT_OPTIONS = {
-  style: {
-    base: {
-      color: '#303238',
-      fontSize: '16px',
-      fontFamily: 'sans-serif',
-      fontSmoothing: 'antialiased',
-      '::placeholder': {
-        color: '#CFD7DF',
-      },
-    },
-    invalid: {
-      color: '#e5424d',
-      ':focus': {
-        color: '#303238',
-      },
-    },
-  },
-};
+import { db } from '../firebase';
 
 const CheckoutForm = () => {
-  const { cart, clearCart, billingInfo, shippingInfo } = useContext(CartContext);
+  const { cart, clearCart, customerInfo } = useContext(CartContext);
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate(); 
   
+  const functionsInstance = getFunctions();
   const createStripePaymentIntent = httpsCallable(functionsInstance, 'createStripePaymentIntent');
   
   const [error, setError] = useState(null);
@@ -58,16 +38,36 @@ const CheckoutForm = () => {
     });
     
     if (result.error) {
-      setError(result.error.message);
+      switch (result.error.type) {
+        case 'card_error':
+          setError('There was a problem with your card. Please check your card details and try again.');
+          break;
+        case 'api_connection_error':
+          setError('There was a problem connecting to the payment service. Please try again.');
+          break;
+        default:
+          setError(result.error.message);
+          break;
+      }
     } else {
       if (result.paymentIntent.status === 'succeeded') {
+        setError(null);
+
+        // define order object
         const order = {
-          billingInfo,
-          shippingInfo,
+          customerInfo,
           items: cart,
           total: parseFloat(totalCost),
         };
-        await addDoc(collection(db, "orders"), order);
+
+        // add order to Firebase
+        try {
+          await addDoc(collection(db, "orders"), order);
+          console.log("Order stored successfully!");
+        } catch (e) {
+          console.error("Error storing order: ", e);
+        }
+
         clearCart();
         navigate("/order-success"); 
       }
@@ -75,49 +75,17 @@ const CheckoutForm = () => {
     
     setProcessing(false);
   };
-
+  
   return (
-    <div className={styles['checkout-form']}>
+    <div>
       <h2>Checkout</h2>
-      <form onSubmit={handleSubmit} className={styles['payment-form']}>
-      <h3 className={styles['section-title']}>Payment Details</h3>
-<div className={styles['payment-details']}>
-  <CardNumberElement options={CARD_ELEMENT_OPTIONS} className={styles['card-element']} />
-  <CardExpiryElement options={CARD_ELEMENT_OPTIONS} className={styles['card-element']} />
-  <CardCvcElement options={CARD_ELEMENT_OPTIONS} className={styles['card-element']} />
-  <input type="text" placeholder="Name on Card" required className={styles['input']} />
-  <p className={styles['total']}>Total: ${totalCost}</p>
-</div>
-
-<h3 className={styles['section-title']}>Billing Details</h3>
-        <div className={styles['billing-details']}>
-          <input type="text" placeholder="First Name" required className={styles['input']} />
-          <input type="text" placeholder="Last Name" required className={styles['input']} />
-          <input type="text" placeholder="Address" required className={styles['input']} />
-          <input type="text" placeholder="City" required className={styles['input']} />
-          <input type="text" placeholder="State" required className={styles['input']} />
-          <input type="text" placeholder="ZIP code" required className={styles['input']} />
-          <input type="text" placeholder="Phone number" required className={styles['input']} />
-        </div>
-
-        <h3 className={styles['section-title']}>Shipping Details</h3>
-        <div className={styles['shipping-details']}>
-          <input type="text" placeholder="First Name" required className={styles['input']} />
-          <input type="text" placeholder="Last Name" required className={styles['input']} />
-          <input type="text" placeholder="Address" required className={styles['input']} />
-          <input type="text" placeholder="City" required className={styles['input']} />
-          <input type="text" placeholder="State" required className={styles['input']} />
-          <input type="text" placeholder="ZIP code" required className={styles['input']} />
-          <input type="text" placeholder="Phone number" required className={styles['input']} />
-        </div>
-
-        <div className={styles['confirm-order']}>
-          <p className={styles['total']}>Total: ${totalCost}</p>
-          <button type="submit" disabled={!stripe || processing} className={styles['pay-button']}>
-            Confirm Order
-          </button>
-        </div>
-        {error && <div className={styles['error']}>{error}</div>}
+      <p>Total: ${totalCost}</p>
+      <form onSubmit={handleSubmit}>
+        <CardElement />
+        <button type="submit" disabled={!stripe || processing}>
+          Pay
+        </button>
+        {error && <div>{error}</div>}
       </form>
     </div>
   );

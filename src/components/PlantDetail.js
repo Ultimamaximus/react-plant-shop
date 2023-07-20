@@ -9,7 +9,7 @@ import styles from './PlantDetail.module.css';
 const PlantDetail = () => {
   const { id } = useParams();
   const [plant, setPlant] = useState(null);
-  const { addToCart, setCartVisible } = useContext(CartContext);  
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchPlant = async () => {
@@ -42,9 +42,7 @@ const PlantDetail = () => {
         <p className={styles.description}>{plant.description}</p>
         <p className={styles.price}>${plant.price}</p>
         <hr className={styles.separator} />
-        <button className={styles.addToCartButton} 
-        onClick={() => { addToCart(plant); setCartVisible(true); }}  // Show cart drawer when added to cart
-        >Add to Cart</button>
+        <button className={styles.addToCartButton} onClick={() => addToCart(plant)}>Add to Cart</button>
       </div>
     </div>
   );

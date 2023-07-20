@@ -1,107 +1,101 @@
 import React, { useState, useContext } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../firebase'; 
 import { CartContext } from '../context/CartContext';  
-import { useNavigate } from 'react-router-dom';
-import './CustomerContactForm.css';
+import { useNavigate } from 'react-router-dom';  
 
 const CustomerContactForm = () => {
   const navigate = useNavigate();  
-  const { storeCustomerInfo } = useContext(CartContext);
+  const { storeCustomerInfo } = useContext(CartContext);  
 
-  const [customerInfo, setCustomerInfo] = useState({
-    name: '', 
-    email: '', 
-    country: '', 
-    state: '', 
-    city: '', 
-    street: ''
-  });
-  
-  const [errors, setErrors] = useState({
-    name: null,
-    email: null,
-    country: null,
-    state: null,
-    city: null,
-    street: null
-  });
-
-  const handleChange = (e) => {
-    setCustomerInfo({
-      ...customerInfo,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const validateForm = () => {
-    let formIsValid = true;
-    let errors = {};
-
-    if(!customerInfo.name){
-      formIsValid = false;
-      errors.name = 'Name is required';
-    }
-
-    if(!customerInfo.email){
-      formIsValid = false;
-      errors.email = 'Email is required';
-    } else if(!/\S+@\S+\.\S+/.test(customerInfo.email)){
-      formIsValid = false;
-      errors.email = 'Email is not valid';
-    }
-
-    // Perform other checks as required
-
-    setErrors(errors);
-    return formIsValid;
-  };
+  const [name, setName] = useState(''); // <-- state for holding the customer's name
+  const [email, setEmail] = useState('');
+  const [country, setCountry] = useState('');
+  const [state, setState] = useState('');
+  const [city, setCity] = useState('');
+  const [street, setStreet] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+  
+    storeCustomerInfo({ name, email, country, state, city, street });  // <-- store the name
 
-    if(validateForm()){
-      storeCustomerInfo(customerInfo);  
-      navigate('/checkout');
-
-      try {
-        await addDoc(collection(db, "customers"), customerInfo);
-        console.log("Customer info stored successfully!");
-      } catch (e) {
-        console.error("Error storing customer info: ", e);
-      }
+    navigate('/checkout');  
+  
+    try {
+      await addDoc(collection(db, "customers"), {
+        name: name, // <-- store the name in the database
+        email: email,
+        country: country,
+        state: state,
+        city: city,
+        street: street,
+      });
+      console.log("Customer info stored successfully!");
+    } catch (e) {
+      console.error("Error storing customer info: ", e);
     }
   };
   
   return (
-    <form className="customerForm" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <h2>Contact Information</h2>
 
-      <label htmlFor="name">Name</label>  
+      <label htmlFor="name">Name</label>  {/* <-- label for the name field */}
       <input
         id="name"
-        name="name"
         type="text"
-        value={customerInfo.name}  
-        onChange={handleChange}
+        value={name}  // <-- value for the name field
+        onChange={event => setName(event.target.value)}  // <-- onChange handler for the name field
         required
       />
-      {errors.name && <p>{errors.name}</p>}
 
       <label htmlFor="email">Email</label>
       <input
         id="email"
-        name="email"
         type="email"
-        value={customerInfo.email}
-        onChange={handleChange}
+        value={email}
+        onChange={event => setEmail(event.target.value)}
         required
       />
-      {errors.email && <p>{errors.email}</p>}
 
-      <h2>Shipping address</h2>
+<h2>Shipping address</h2>
 
-      {/* More fields like this, don't forget the error messages */}
+<label htmlFor="country">Country</label>
+<input
+  id="country"
+  type="text"
+  value={country}
+  onChange={event => setCountry(event.target.value)}
+  required
+/>
+
+<label htmlFor="state">State</label>
+<input
+  id="state"
+  type="text"
+  value={state}
+  onChange={event => setState(event.target.value)}
+  required
+/>
+
+<label htmlFor="city">City</label>
+<input
+  id="city"
+  type="text"
+  value={city}
+  onChange={event => setCity(event.target.value)}
+  required
+/>
+
+<label htmlFor="street">Street</label>
+<input
+  id="street"
+  type="text"
+  value={street}
+  onChange={event => setStreet(event.target.value)}
+  required
+/>
 
       <button type="submit">Next</button>
     </form>
@@ -109,3 +103,4 @@ const CustomerContactForm = () => {
 };
 
 export default CustomerContactForm;
+

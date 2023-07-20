@@ -17,7 +17,6 @@
 .plantImage {
   width: 100%;
   height: auto;
-  border-radius: 20px;
 }
 
 .detailText {
@@ -26,7 +25,6 @@
   flex-direction: column;
   align-items: center; /* Keep the center alignment */
   padding: 20px;
-  margin-top: 10%;
 }
 
 h2 {
@@ -60,7 +58,7 @@ h2 {
 }
 
 .addToCartButton {
-  background-color: #b1d8b7;
+  background-color: #007b5e;
   border: none;
   color: white;
   padding: 15px 32px;

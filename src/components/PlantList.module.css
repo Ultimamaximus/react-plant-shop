@@ -8,16 +8,3 @@
   gap: 20px;
   padding: 20px; /* Add some padding */
 }
-
-.productsHeading {
-  text-align: center;
-  font-size: 25px;
-  margin-bottom: 20px; 
-}
-
-.lineSeparator {
-  height: 1px;
-  background-color: #000; /* or any color you want */
-  width: 5%; /* Adjust to desired width */
-  margin: 25px auto;/* adjust as needed */
-}
