@@ -17,7 +17,9 @@
 .plantImage {
   width: 100%;
   height: auto;
+  border-radius: 20px; /* adjust this value as needed */
 }
+
 
 .detailText {
   flex: 1;

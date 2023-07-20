@@ -7,6 +7,8 @@ import PlantList from './components/PlantList';
 import PlantDetail from './components/PlantDetail';
 import { CartProvider } from './context/CartContext';
 import Cart from './components/Cart';
+import Banner from './components/Banner';
+import Footer from './components/Footer';
 import CustomerContactForm from './components/CustomerContactForm';
 import CheckoutForm from './components/CheckoutForm';
 import OrderSuccess from './components/OrderSuccess';
@@ -18,6 +20,7 @@ function App() {
     <Elements stripe={stripePromise}>
       <CartProvider>
         <Router>
+        <Banner />
           <Navbar />
           <div className="app">
             <Routes>
@@ -29,6 +32,7 @@ function App() {
               <Route path="/order-success" element={<OrderSuccess />} />
             </Routes>
           </div>
+          <Footer />
         </Router>
       </CartProvider>
     </Elements>

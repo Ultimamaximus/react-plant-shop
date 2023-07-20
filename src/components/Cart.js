@@ -16,23 +16,26 @@ function Cart() {
 
   return (
     <div className={styles.cartContainer}>
+      <h1 className={styles.title}>Shopping Cart</h1>
       {cart.map((item) => (
         <div key={item.id} className={styles.cartItem}>
           <img src={item.image} alt={item.name} />
           <div className={styles.cartItemInfo}>
             <h2>{item.name}</h2>
             <p>${item.price}</p>
-            <label>
-              Quantity:
-              <input type="number" min="1" value={item.quantity} onChange={(event) => handleQuantityChange(item, event)} />
-            </label>
-            <button onClick={() => handleRemoveClick(item)}>Remove</button>
+            <div className={styles.quantityControl}>
+              <label>
+                Quantity:
+                <input type="number" min="1" value={item.quantity} onChange={(event) => handleQuantityChange(item, event)} />
+              </label>
+              <button className={styles.removeButton} onClick={() => handleRemoveClick(item)}>Remove</button>
+            </div>
           </div>
         </div>
       ))}
-<Link to="/customer-info">
-  <button>Go to Checkout</button>
-</Link>
+      <Link to="/customer-info">
+        <button className={styles.checkoutButton}>Go to Checkout</button>
+      </Link>
     </div>
   );
 }
