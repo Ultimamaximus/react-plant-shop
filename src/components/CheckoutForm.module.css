@@ -1,0 +1,104 @@
+/* CheckoutForm.module.css */
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 700px; /* Added max-width to limit the form's size */
+}
+  
+.section-title {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    text-align: left;
+    width: 100%;
+}
+  
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+  
+.billing-details,
+.payment-details,
+.shipping-details {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+  
+.billing-details div,
+.shipping-details div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+  
+.input {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+  
+.input-half {
+    width: 48%;
+    padding: 0.5em;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+  
+.card-element {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+  
+.confirm-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+}
+  
+.total {
+    font-size: 1.5em;
+}
+  
+.pay-button {
+    padding: 0.5em 1em;
+    font-size: 1.2em;
+    color: white;
+    background-color: #0070f3;
+    border: none;
+    border-radius: 4px;
+}
+  
+.error {
+    color: red;
+}
+  
+
+.billing-details div,
+.shipping-details div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em
+}
+
+@media (max-width: 768px) {
+    .input-half {
+      width: 100%;
+    }
+
+    .billing-details div,
+    .shipping-details div {
+      flex-direction: column;
+    }
+}

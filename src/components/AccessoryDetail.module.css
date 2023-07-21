@@ -1,0 +1,79 @@
+/* AccessoryDetail.module.css */
+.detailContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 50px;
+  }
+  
+  .imageContainer {
+    flex: 1;
+    max-width: 600px;
+  }
+  
+  .accessoryImage {
+    width: 100%;
+    height: auto;
+    border-radius: 20px; /* adjust this value as needed */
+  }
+  
+  
+  .detailText {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Keep the center alignment */
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #333;
+    font-size: 48px; /* Increase font size */
+    margin-bottom: 20px;
+    text-align: center; /* Center the text */
+  }
+  
+  .description {
+    color: #666;
+    font-size: 24px; /* Increase font size */
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: center; /* Center the text */
+  }
+  
+  .price {
+    color: #333;
+    font-size: 36px; /* Increase font size */
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center; /* Center the text */
+  }
+  
+  .separator {
+    border: 0;
+    border-top: 1px solid #000; 
+    width: 10%; /* Adjust to desired width */
+    margin: 30px auto; /* This will center the line */
+  }
+  
+  .addToCartButton {
+    background-color: #007b5e;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px; /* Increase font size */
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease; /* Add transition for smooth color change */
+  }
+  
+  .addToCartButton:active {
+    background-color: #00563f; /* Change color when button is clicked */
+  }
+  

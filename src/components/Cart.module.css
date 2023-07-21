@@ -34,9 +34,11 @@ body {
 .cartItemInfo {
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* Add this */
   align-items: flex-start;
   flex-grow: 1;
-  margin-left: 20px; /* increase margin */
+  margin-left: 20px;
+  height: 100%; /* Add this */
 }
 
 .cartItem img {
@@ -50,8 +52,8 @@ body {
 }
 
 .cartItemInfo p {
-  font-size: 20px; /* increase font-size */
-  margin-bottom: 10px; /* increase margin */
+  font-size: 28px; /* Increase font size */
+  margin: 20px 0; /* Adjust vertical margin */
 }
 
 .quantityControl {

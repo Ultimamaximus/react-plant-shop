@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from './PlantItem.module.css';
 
 function PlantItem({ plant }) {
+  console.log("Plant: ", plant);
   return (
     <div className={styles.plantItem}>
       <Link to={`/plant/${plant.id}`} className={styles.plantLink}>

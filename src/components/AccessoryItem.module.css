@@ -1,0 +1,40 @@
+/* AccessoryItem.module.css */
+
+.accessoryItem {
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .accessoryItem:hover {
+    transform: scale(1.05);
+  }
+  
+  .accessoryLink {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .accessoryImage {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+  
+  .nameAndPrice {
+    display: flex;
+    justify-content: center; /* Align the text to the center */
+    align-items: center; /* Align the text vertically */
+  }
+  
+  .accessoryNameAndPrice {
+    font-size: 16px;
+    color: #007b5e;
+    font-weight: bold;
+    margin-top: 10px; /* Add some margin above the name and price */
+  }
+  

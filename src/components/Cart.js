@@ -33,7 +33,7 @@ function Cart() {
           </div>
         </div>
       ))}
-      <Link to="/customer-info">
+      <Link to="/checkout">  {/* Link updated here */}
         <button className={styles.checkoutButton}>Go to Checkout</button>
       </Link>
     </div>
@@ -41,4 +41,3 @@ function Cart() {
 }
 
 export default Cart;
-

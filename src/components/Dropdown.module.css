@@ -6,22 +6,26 @@
 }
 
 .dropdownButton {
-  background-color: #000000;
-  color: white;
+  background-color: #F1ECE4;
+  color: black;
   padding: 16px;
-  font-size: 16px;
+  font-size: 25px;
   border: none;
   cursor: pointer;
 }
 
 .dropdownContent {
-  display: none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 5px; /* Rounded edges */
+  display: none; /* This is the default state */
+}
+
+.dropdownContent.active {
+  display: block; /* Now this will show when isOpen is true */
 }
 
 .dropdownItem {

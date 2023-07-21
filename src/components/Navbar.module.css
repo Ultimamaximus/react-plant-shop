@@ -54,5 +54,6 @@
 .menuItems {
   display: flex;
   justify-content: space-between;
+  align-items: center; /* added to vertically align items */
   width: 50%; /* adjust as needed */
 }

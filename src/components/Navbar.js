@@ -1,24 +1,36 @@
-// Navbar.js
-
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import CartIcon from './CartIcon';
 import styles from './Navbar.module.css';
 import { IoPersonCircleOutline, IoSearchOutline } from 'react-icons/io5';
-import { ReactComponent as Logo } from './Logo.svg'; 
+import { ReactComponent as Logo } from './Logo.svg';
+import { CategoryContext } from '../context/CategoryContext';
+import { AccessoriesContext } from '../context/AccessoriesContext';
 
 function Navbar() {
+  const { setSelectedCategory } = useContext(CategoryContext);
+  const { setSelectedAccessory } = useContext(AccessoriesContext);
+
   const plants = [
-    { label: 'Low Light Plants', path: '/fruit-plants' },
-    { label: 'Pet Safe Plants', path: '/flower-plants' },
-    { label: 'All Plants', path: '/flower-plants' }
+    { label: 'Low Light Plants', path: '/', category: 'low-light' },
+    { label: 'Pet Safe Plants', path: '/', category: 'pet-safe' },
+    { label: 'All Plants', path: '/', category: 'all' }
   ];
 
   const accessories = [
-    { label: 'Pots', path: '/accessories/pots' },
-    { label: 'Fertilizers', path: '/accessories/fertilizers' },
+    { label: 'Pots', path: '/accessories', category: 'pot' },
+    { label: 'Fertilizers', path: '/accessories', category: 'fertilizer' },
+    { label: 'All Accessories', path: '/accessories', category: 'all' }
   ];
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const handleAccessorySelect = (category) => {
+    setSelectedAccessory(category);
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -26,9 +38,9 @@ function Navbar() {
         <Logo className={styles.logo} />
       </div>
       <div className={styles.menuItems}>
-        <Link to="/" className={styles.navLink}>Shop All</Link>
-        <Dropdown title="Plants" items={plants} />
-        <Dropdown title="Accessories" items={accessories} />
+      <Link to="/all" className={styles.navLink}>Shop All</Link>
+        <Dropdown title="Plants" items={plants} onSelect={handleCategorySelect} />
+        <Dropdown title="Accessories" items={accessories} onSelect={handleAccessorySelect} />
         <Link to="/gifts" className={styles.navLink}>Gifts</Link>
       </div>
       <div className={styles.icons}>
