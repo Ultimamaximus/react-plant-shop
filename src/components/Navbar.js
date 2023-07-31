@@ -13,9 +13,9 @@ function Navbar() {
   const { setSelectedAccessory } = useContext(AccessoriesContext);
 
   const plants = [
-    { label: 'Low Light Plants', path: '/', category: 'low-light' },
-    { label: 'Pet Safe Plants', path: '/', category: 'pet-safe' },
-    { label: 'All Plants', path: '/', category: 'all' }
+    { label: 'Low Light Plants', path: '/plants', category: 'low-light' },
+    { label: 'Pet Safe Plants', path: '/plants', category: 'pet-safe' },
+    { label: 'All Plants', path: '/plants', category: 'all' }
   ];
 
   const accessories = [
@@ -35,10 +35,12 @@ function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
-        <Logo className={styles.logo} />
+        <Link to="/">
+          <Logo className={styles.logo} />
+        </Link>
       </div>
       <div className={styles.menuItems}>
-      <Link to="/all" className={styles.navLink}>Shop All</Link>
+        <Link to="/all" className={styles.navLink}>Shop All</Link>
         <Dropdown title="Plants" items={plants} onSelect={handleCategorySelect} />
         <Dropdown title="Accessories" items={accessories} onSelect={handleAccessorySelect} />
         <Link to="/gifts" className={styles.navLink}>Gifts</Link>
