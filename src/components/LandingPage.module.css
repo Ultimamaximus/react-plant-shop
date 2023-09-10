@@ -4,7 +4,7 @@
   justify-content: center; /* Added to center items vertically */
   align-items: center; /* Ensure items are centered horizontally */
   height: 100vh; /* Adjusted to full viewport height */
-  background-image: url('./Hero.jpg');
+  background-image: url('./Hero.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
