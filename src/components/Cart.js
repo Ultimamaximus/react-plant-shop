@@ -17,25 +17,35 @@ function Cart() {
   return (
     <div className={styles.cartContainer}>
       <h1 className={styles.title}>Shopping Cart</h1>
-      {cart.map((item) => (
-        <div key={item.id} className={styles.cartItem}>
-          <img src={item.image} alt={item.name} />
-          <div className={styles.cartItemInfo}>
-            <h2>{item.name}</h2>
-            <p>${item.price}</p>
-            <div className={styles.quantityControl}>
-              <label>
-                Quantity:
-                <input type="number" min="1" value={item.quantity} onChange={(event) => handleQuantityChange(item, event)} />
-              </label>
-              <button className={styles.removeButton} onClick={() => handleRemoveClick(item)}>Remove</button>
-            </div>
-          </div>
-        </div>
-      ))}
-      <Link to="/checkout">  {/* Link updated here */}
-        <button className={styles.checkoutButton}>Go to Checkout</button>
-      </Link>
+      {
+
+        cart.length === 0 ? (
+          <p className={styles.emptyCartMessage}>Your cart is looking a little plant-shy.</p>
+        ) : (
+
+          <>
+            {cart.map((item) => (
+              <div key={item.id} className={styles.cartItem}>
+                <img src={item.image} alt={item.name} />
+                <div className={styles.cartItemInfo}>
+                  <h2>{item.name}</h2>
+                  <p>${item.price}</p>
+                  <div className={styles.quantityControl}>
+                    <label>
+                      Quantity:
+                      <input type="number" min="1" value={item.quantity} onChange={(event) => handleQuantityChange(item, event)} />
+                    </label>
+                    <button className={styles.removeButton} onClick={() => handleRemoveClick(item)}>Remove</button>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <Link to="/checkout">
+              <button className={styles.checkoutButton}>Go to Checkout</button>
+            </Link>
+          </>
+        )
+      }
     </div>
   );
 }

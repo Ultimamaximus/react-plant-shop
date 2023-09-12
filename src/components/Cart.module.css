@@ -115,3 +115,32 @@ body {
 .checkoutButton:hover {
   background-color: #00563f;
 }
+
+.emptyCartMessage {
+  font-size: 20px;
+  color: #666;
+  margin: 30px 0;
+  font-style: italic;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-10px);
+  }
+  60% {
+      transform: translateY(-5px);
+  }
+}
+
+.emptyCartMessage:hover {
+  animation: bounce 1s;
+}
