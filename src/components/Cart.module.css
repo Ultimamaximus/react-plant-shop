@@ -144,3 +144,58 @@ body {
 .emptyCartMessage:hover {
   animation: bounce 1s;
 }
+
+@media (max-width: 768px) {
+  .cartContainer {
+      width: 90%;  /* Adjust to fit mobile width */
+      padding: 10px;
+  }
+
+  .title {
+      font-size: 24px;
+      margin-bottom: 20px;
+  }
+
+  .cartItem {
+      flex-direction: column;
+      padding: 10px;
+  }
+
+  .cartItem img {
+      width: 100px;
+      height: 100px;
+  }
+
+  .cartItemInfo h2 {
+      font-size: 18px;
+  }
+
+  .cartItemInfo p {
+      font-size: 20px;
+      margin: 10px 0;
+  }
+
+  .quantityControl {
+      flex-direction: column;
+      padding: 5px;
+      margin-top: 5px;
+  }
+
+  .quantityControl input {
+      margin: 5px 0;
+  }
+
+  .removeButton, .checkoutButton {
+      padding: 10px 20px;
+  }
+
+  .checkoutButton {
+      margin-top: 15px;
+  }
+
+  .emptyCartMessage {
+      font-size: 18px;
+      margin: 20px 0;
+      padding: 10px;
+  }
+}

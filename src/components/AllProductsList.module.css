@@ -23,3 +23,20 @@
     margin-bottom: 30px;
   }
   
+  @media only screen and (max-width: 768px) {
+    .productList {
+        grid-template-columns: repeat(2, 1fr); /* Change to 2 columns for tablet screens */
+        padding: 10px; /* Adjust padding */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .productList {
+        grid-template-columns: 1fr; /* Change to 1 column for mobile screens */
+        padding: 5px; /* Adjust padding */
+    }
+
+    .lineSeparator {
+        width: 10%; /* Increase line width a little for better visibility */
+    }
+}

@@ -77,3 +77,41 @@
     background-color: #00563f; /* Change color when button is clicked */
   }
   
+  @media (max-width: 768px) {
+    .detailContainer {
+        flex-direction: column;  
+        gap: 20px;
+        padding: 10px;
+    }
+    
+    .imageContainer,
+    .detailText {
+        max-width: 100%;
+        flex: none; /* Resets flex values for stacking */
+    }
+
+    h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .description {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .price {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .separator {
+        width: 20%;
+        margin: 20px auto;
+    }
+    
+    .addToCartButton {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}

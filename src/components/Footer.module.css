@@ -57,3 +57,41 @@
     font-weight: bold;
   }
   
+  @media only screen and (max-width: 768px) {
+    .footer {
+        padding: 20px 0; /* Reduced padding for a tighter footer */
+    }
+
+    .content {
+        flex-direction: column; /* Stack content vertically on smaller screens */
+        align-items: center;
+        padding: 0 10px; /* Reduced side padding */
+    }
+
+    .logoContainer,
+    .textContainer {
+        flex-basis: 100%; /* Allow content to take full width */
+        margin-bottom: 20px; /* Added spacing between stacked items */
+    }
+
+    .logo {
+        height: 150px; /* Reduce logo size for smaller screens */
+    }
+
+    .textContainer {
+        flex-wrap: wrap; /* Allow columns to wrap */
+    }
+
+    .column {
+        flex: 1; /* Allow columns to share space equally */
+        margin-right: 20px; /* Spacing between columns */
+    }
+
+    .column li {
+        font-size: 16px; /* Decreased font size for smaller screens */
+    }
+
+    h3 {
+        font-size: 20px; /* Reduced font size for mobile */
+    }
+}

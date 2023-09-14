@@ -48,3 +48,23 @@
 .shopNowButton:hover {
   background-color: #6ba378;
 }
+
+@media only screen and (max-width: 768px) {
+  .heroContent {
+    width: 80%; /* Increase width for better readability on smaller screens */
+    padding: 10px; /* Reduce padding for better fit on smaller screens */
+  }
+
+  .title {
+    font-size: 2em; /* Decrease font size for smaller screens */
+  }
+  
+  .subtitle {
+    font-size: 1.2em; /* Decrease font size for smaller screens */
+  }
+
+  .shopNowButton {
+    font-size: 1em; /* Adjust button font size */
+    padding: 0.4em 0.8em; /* Adjust button padding */
+  }
+}
