@@ -32,11 +32,16 @@
 
 @media only screen and (max-width: 480px) {
     .productList {
-        grid-template-columns: 1fr; /* Change to 1 column for mobile screens */
-        padding: 5px; /* Adjust padding */
+      grid-template-columns: repeat(1, 1fr); /* Change to a single column grid for smartphones */
+      gap: 10px;
+      padding: 10px;
     }
 
     .lineSeparator {
         width: 10%; /* Increase line width a little for better visibility */
+    }
+
+    .productsHeading {
+      margin-bottom: 15px;
     }
 }
