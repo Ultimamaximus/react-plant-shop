@@ -34,4 +34,4 @@ Ready to embark on a botanical adventure? Visit my website at [https://symphonio
 
 If you have any questions, feedback, or suggestions, I'd love to hear from you. You can reach me through the GitHub repository or by email at [victorbranson23@gmail.com].
 
-Thank you for visiting the Silvanus Grove repository! Happy planting! 🪴🌱
+Thank you for visiting the Silvanus Grove repository! Happy planting! 🌱
